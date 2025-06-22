@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Manage Server</title></head>
+<body>
+  <h2>Managing Server ID: {{ guild_id }}</h2>
+  {% if is_admin %}
+    <form action="/dashboard/{{ guild_id }}/update" method="POST">
+      <label>Prefix:</label>
+      <input type="text" name="prefix" value="{{ settings.prefix }}"><br><br>
+      <label>Log Channel ID:</label>
+      <input type="text" name="log_channel" value="{{ settings.log_channel }}"><br><br>
+      <input type="submit" value="Save">
+    </form>
+  {% else %}
+    <p>You do not have administrative permissions for this server.</p>
+  {% endif %}
+  <br><a href="/dashboard">Back</a>
+</body>
+</html>
